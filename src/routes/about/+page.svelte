@@ -51,6 +51,7 @@
 		email = '';
 		message = '';
 		selectedTopic = '';
+		error = '';
 	}
 </script>
 
