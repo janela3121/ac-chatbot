@@ -50,6 +50,7 @@
 
 		if (userConfirmed) {
 			isSubmitted = false;
+			conversationHistory = [];
 			name = '';
 			email = '';
 			message = '';
