@@ -23,5 +23,9 @@
 		"tailwindcss": "^3.4.13",
 		"vite": "^5.0.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@ai-sdk/openai": "^0.0.63",
+		"openai": "^4.67.0"
+	}
 }
