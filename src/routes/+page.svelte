@@ -7,6 +7,7 @@
 	let isSubmitted = false;
 	let userMessage = '';
 	let conversationHistory = [];
+	let userMessageInput;
 
 	function handleSubmit() {
 		if (selectedTopic === 'Other') {
@@ -92,6 +93,10 @@
 			selectedTopic = '';
 			error = '';
 		}
+	}
+
+	$: if (isSubmitted && userMessageInput) {
+		userMessageInput.focus();
 	}
 </script>
 
@@ -270,14 +275,16 @@
 				<div class="mt-6">
 					<form method="POST" on:submit|preventDefault={sendMessage}>
 						<input
-							type="text"
+							type="text" id="user-message" bind:this={userMessageInput}
 							bind:value={userMessage}
 							placeholder="Type your message..."
 							class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 						/>
 						<button type="submit"
-							class="mt-2 py-2 px-4 bg-green-700 hover:bg-green-800 text-white font-bold rounded-lg shadow-md">Send</button
-						>
+							class="mt-2 py-2 px-4 bg-green-700 hover:bg-green-800 text-white font-bold rounded-lg shadow-md"
+							disabled={!userMessage.trim()}>
+							Send
+						</button>
 					</form>
 				</div>
 			</div>
