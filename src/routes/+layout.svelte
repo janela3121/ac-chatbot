@@ -3,26 +3,26 @@
 	import '../app.css';
 </script>
 
-<div class="app">
-	<Header />
+<div class="bg-[#F1F5F8] dark:bg-darkbg h-screen flex flex-col items-center justify-between">
+	<!-- <Header /> -->
 
 	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>&copy;&nbsp;Copyright 2024 People Dynamics Inc.</p>
 	</footer>
 </div>
 
 <style>
-	.app {
+	/* .app {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-	}
+	} */
 
-	main {
+	/* main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -31,7 +31,7 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
+	} */
 
 	footer {
 		display: flex;
@@ -41,9 +41,9 @@
 		padding: 12px;
 	}
 
-	footer a {
+	/* footer a {
 		font-weight: bold;
-	}
+	} */
 
 	@media (min-width: 480px) {
 		footer {

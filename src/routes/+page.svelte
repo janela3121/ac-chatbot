@@ -1,59 +1,51 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { goto } from '$app/navigation';
+	let username = '';
+	let password = '';
+	let error = '';
+
+	const handleLogin = () => {
+		const adminUser = 'admin';
+		const adminPass = 'password123';
+
+		if (username === adminUser && password === adminPass) {
+			goto('/sverdle');
+		} else {
+			error = 'Invalid username or password';
+		}
+	};
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<section class="bg-[#F1F5F8] dark:bg-darkbg flex flex-col items-center justify-center mt-[50%]">
+	<h1 class="text-3xl font-bold text-center mb-6">Welcome to AC Chatbot</h1>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<div class="frosted-glass my-10 p-10 bg-white/30 border border-gray-200 rounded-lg shadow-lg w-[400px]"> <!-- Adjusted width to max-w-md -->
+		<h2 class="text-center text-lg font-bold mb-10">Administrator Login</h2>
+		<form on:submit|preventDefault={handleLogin}>
+		<div class="flex flex-col mb-4 w-full">
+			<label for="username" class="mb-2 block text-gray-700 font-semibold">Username:</label>
+			<input type="text" id="username" bind:value={username} class="border-2 border-white/50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+		</div>
+		<div class="flex flex-col mb-8 w-full">
+			<label for="password" class="mb-4 block text-gray-700 font-semibold">Password:</label>
+			<input type="password" id="password" bind:value={password} class="border-2 border-white/50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+		</div>
+		{#if error}
+			<p id="error" class="text-red-500 mb-4">{error}</p>
+		{/if}
+		<button type="submit" class="w-full py-2 px-4 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+			Login
+		</button>
+		</form>
+		<br />
+	</div>
+	<a href="/about">Go to AC Chatbot</a>
 </section>
 
+
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+.frosted-glass {
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.2);
+}
 </style>
