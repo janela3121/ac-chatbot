@@ -37,5 +37,7 @@
 		</form>
 		<br />
 	</div>
-	<a href="/">Go to AC Chatbot</a>
+	<div class="text-center mt-5 font-bold">
+		<a class="text-sky-600" href="/">Go to AC Chatbot</a>
+	</div>
 </section>

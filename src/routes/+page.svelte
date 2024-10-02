@@ -218,8 +218,8 @@
 					</button>
 				</form>
 			</div>
-			<div class="text-center mt-5">
-				<a href="/admin">Administrator Login</a>
+			<div class="text-center mt-5 font-bold">
+				<a class="text-sky-600" href="/admin">Administrator Login</a>
 			</div>
 		{/if}
 		<!-- Chat Conversation Section -->
