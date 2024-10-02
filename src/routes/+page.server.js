@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/private';
 import { OpenAI } from 'openai';
 
-const openai = new OpenAI({ apiKey: '' });
+const openai = new OpenAI({ apiKey: env.VITE_OPENAI_API_KEY });
 
 export const actions = {
 	default: async ({ request }) => {
