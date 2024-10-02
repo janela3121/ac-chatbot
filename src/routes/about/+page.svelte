@@ -46,12 +46,16 @@
 	}
 
 	function endChat() {
-		isSubmitted = false;
-		name = '';
-		email = '';
-		message = '';
-		selectedTopic = '';
-		error = '';
+		const userConfirmed = confirm("Are you sure you want to end this session?");
+
+		if (userConfirmed) {
+			isSubmitted = false;
+			name = '';
+			email = '';
+			message = '';
+			selectedTopic = '';
+			error = '';
+		}
 	}
 </script>
 
