@@ -40,34 +40,43 @@
 			}
 		];
 
-		const formData = new FormData();
-		formData.append('message', userMessage);
-		formData.append(
-			'conversationHistory',
-			JSON.stringify(
+		// const formData = new FormData();
+		// formData.append('message', userMessage);
+		// formData.append(
+		// 	'conversationHistory',
+		// 	JSON.stringify(
+		// 		conversationHistory.map((msg) => ({
+		// 			role: msg.sender === 'user' ? 'user' : 'assistant',
+		// 			content: msg.text
+		// 		}))
+		// 	)
+		// );
+		const data = {
+			message: userMessage,
+			conversationHistory: JSON.stringify(
 				conversationHistory.map((msg) => ({
 					role: msg.sender === 'user' ? 'user' : 'assistant',
 					content: msg.text
 				}))
 			)
-		);
+		}
 
 		userMessage = ''; // Clear the input field
 
 		// Send the form data to the server
-		const response = await fetch('/', {
+		const response = await fetch('/api/chatbot', {
 			method: 'POST',
-			body: formData
+			body: JSON.stringify(data)
 		});
 
 		const result = await response.json();
 
-		if (result.success) {
+		if (result) {
 			conversationHistory = [
 				...conversationHistory,
 				{
 					sender: 'bot',
-					text: result.botResponse
+					text: result
 				}
 			];
 		} else {
